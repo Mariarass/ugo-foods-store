@@ -1,0 +1,26 @@
+<svg width="600" height="500" viewBox="0 0 600 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="mangoPattern" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
+      <rect width="80" height="80" fill="#F59E0B"/>
+      <rect x="5" y="5" width="35" height="35" rx="3" fill="#FBBF24"/>
+      <rect x="45" y="45" width="30" height="30" rx="3" fill="#FCD34D"/>
+    </pattern>
+    <linearGradient id="barDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2d2d2d"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="500" fill="url(#mangoPattern)"/>
+  <!-- Bars arranged diagonally -->
+  <g>
+    <rect x="20" y="30" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 110, 65)"/>
+    <rect x="150" y="100" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 240, 135)"/>
+    <rect x="280" y="170" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 370, 205)"/>
+    <rect x="50" y="200" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 140, 235)"/>
+    <rect x="180" y="270" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 270, 305)"/>
+    <rect x="350" y="250" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 440, 285)"/>
+    <rect x="80" y="370" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 170, 405)"/>
+    <rect x="250" y="400" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 340, 435)"/>
+    <rect x="420" y="380" width="180" height="70" rx="6" fill="url(#barDark)" transform="rotate(-20, 510, 415)"/>
+  </g>
+</svg>

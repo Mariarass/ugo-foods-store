@@ -1,0 +1,307 @@
+.page {
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 2rem 1.5rem 4rem;
+  padding-top: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 2rem);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: #c5807d;
+}
+
+/* Policy Content */
+.policyContent {
+  background: white;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.lastUpdated {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* Sections */
+.section {
+  margin-bottom: 2rem;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.75rem;
+}
+
+.sectionText {
+  font-size: 0.95rem;
+  color: #64748b;
+  line-height: 1.7;
+}
+
+.sectionText p {
+  margin-bottom: 1rem;
+}
+
+.sectionText p:last-child {
+  margin-bottom: 0;
+}
+
+.sectionText ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.sectionText ul li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sectionText ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  background: #c5807d;
+  border-radius: 50%;
+}
+
+.sectionText a {
+  color: #c5807d;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.sectionText a:hover {
+  color: #a86b68;
+  text-decoration: underline;
+}
+
+/* Contact Box */
+.contactBox {
+  background: #f8fafc;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid #e2e8f0;
+}
+
+.contactBox h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.contactBox p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.contactBox a {
+  color: #c5807d;
+  font-weight: 500;
+}
+
+/* Search Page Specific */
+.searchPage {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.searchIcon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #c5807d 0%, #a86b68 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+  margin-bottom: 1rem;
+}
+
+.searchInput:focus {
+  border-color: #c5807d;
+}
+
+.searchInput::placeholder {
+  color: #94a3b8;
+}
+
+.searchHint {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.quickLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.quickLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  background: #f1f5f9;
+  color: #64748b;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.quickLink:hover {
+  background: #c5807d;
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem 1rem 3rem;
+    padding-top: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 1.5rem);
+  }
+
+  .backLink {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .policyContent {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .title {
+    font-size: 1.4rem;
+  }
+
+  .lastUpdated {
+    font-size: 0.75rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+
+  .sectionText {
+    font-size: 0.85rem;
+  }
+
+  .contactBox {
+    padding: 1.25rem;
+  }
+
+  .contactBox h4 {
+    font-size: 0.9rem;
+  }
+
+  .contactBox p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 0.75rem 0.75rem 2rem;
+    padding-top: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 1rem);
+  }
+
+  .backLink {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .policyContent {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .sectionTitle {
+    font-size: 0.95rem;
+  }
+
+  .sectionText {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .sectionText ul li {
+    padding-left: 1.25rem;
+  }
+
+  .quickLinks {
+    gap: 0.5rem;
+  }
+
+  .quickLink {
+    padding: 0.5rem 0.85rem;
+    font-size: 0.75rem;
+  }
+}

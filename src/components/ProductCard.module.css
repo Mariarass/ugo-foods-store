@@ -1,0 +1,306 @@
+.productCard {
+  background: #f5f5f5;
+  border-radius: 24px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  transition: box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.productCardFeatured {
+  border: 2px solid #D4A574;
+}
+
+/* Badge */
+.badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+}
+
+.sugarBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.95);
+  color: #16a34a;
+  padding: 0.4rem 0.8rem;
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Image Container */
+.imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0 0.5rem;
+  margin-top: 1rem;
+}
+
+.productImage {
+  width: 140px;
+  height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* Content */
+.content {
+  text-align: center;
+  padding-top: 0.5rem;
+}
+
+.category {
+  color: #94a3b8;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+}
+
+.productName {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.priceRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.ingredients {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+  padding: 0 0.5rem;
+}
+
+.ingredientTag {
+  background: rgba(255, 255, 255, 0.9);
+  color: #64748b;
+  padding: 0.3rem 0.65rem;
+  border-radius: 50px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* Hover Overlay */
+.hoverOverlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.hoverImage {
+  object-fit: cover;
+  z-index: 0;
+}
+
+.hoverOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.2) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  z-index: 1;
+}
+
+.hoverActions {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.actionButton {
+  width: 48px;
+  height: 48px;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #1e293b;
+  flex-shrink: 0;
+}
+
+.actionButton:hover {
+  background: #1e293b;
+  color: white;
+  transform: scale(1.05);
+}
+
+.addToCartButton {
+  flex: 1;
+  padding: 0.875rem 1.25rem;
+  background: white;
+  color: #1e293b;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.addToCartButton:hover {
+  background: #1e293b;
+  color: white;
+  transform: scale(1.02);
+}
+
+.viewButton {
+  flex: 1;
+  padding: 1rem 1.5rem;
+  background: white;
+  color: #1e293b;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.viewButton:hover {
+  background: #1e293b;
+  color: white;
+  transform: scale(1.02);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .productCard {
+    min-height: 360px;
+    padding: 1.25rem;
+  }
+
+  .productImage {
+    width: 110px;
+    height: 160px;
+  }
+
+  .productName {
+    font-size: 1.2rem;
+  }
+
+  .category {
+    font-size: 0.65rem;
+  }
+
+  .price {
+    font-size: 1rem;
+  }
+
+  .ingredientTag {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .hoverActions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .actionButton {
+    width: 100%;
+    border-radius: 50px;
+    height: auto;
+    padding: 0.75rem;
+  }
+
+  .addToCartButton,
+  .viewButton {
+    padding: 0.75rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .productCard {
+    min-height: 340px;
+    padding: 1rem;
+  }
+
+  .imageContainer {
+    padding: 0.5rem 0;
+  }
+
+  .productImage {
+    width: 100px;
+    height: 140px;
+  }
+
+  .productName {
+    font-size: 1.1rem;
+  }
+
+  .badges {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+
+  .sugarBadge {
+    font-size: 0.6rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .ingredients {
+    gap: 0.25rem;
+  }
+
+  .ingredientTag {
+    font-size: 0.55rem;
+    padding: 0.2rem 0.4rem;
+  }
+}

@@ -1,0 +1,141 @@
+.bar {
+  background: linear-gradient(90deg, #1e293b 0%, #334155 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  height: var(--announcement-height, 34px);
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.icon {
+  color: #c5807d;
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.link {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #c5807d;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s;
+  margin-left: 0.25rem;
+}
+
+.link:hover {
+  color: #d4a574;
+}
+
+.navButton {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.navButton:hover {
+  color: white;
+}
+
+.closeButton {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .bar {
+    padding: 0 0.75rem;
+    padding-right: 2rem;
+  }
+
+  .text {
+    font-size: 0.7rem;
+  }
+
+  .link {
+    font-size: 0.7rem;
+  }
+
+  .icon {
+    display: none;
+  }
+
+  .navButton {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .bar {
+    padding: 0 0.5rem;
+    padding-right: 1.75rem;
+  }
+
+  .text {
+    font-size: 0.65rem;
+  }
+
+  .link {
+    font-size: 0.65rem;
+  }
+}

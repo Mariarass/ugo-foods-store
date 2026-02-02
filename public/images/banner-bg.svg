@@ -1,0 +1,19 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="nutsPattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+      <circle cx="25" cy="25" r="20" fill="#8B7355"/>
+      <circle cx="75" cy="25" r="15" fill="#A0522D"/>
+      <circle cx="50" cy="70" r="18" fill="#DEB887"/>
+      <circle cx="10" cy="80" r="12" fill="#C4A77D"/>
+      <circle cx="90" cy="75" r="14" fill="#8B7355"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="300" fill="url(#nutsPattern)"/>
+  <!-- Bars overlay -->
+  <g opacity="0.8">
+    <rect x="50" y="80" width="200" height="80" rx="6" fill="#2a2a2a" transform="rotate(-10, 150, 120)"/>
+    <rect x="350" y="100" width="200" height="80" rx="6" fill="#2a2a2a" transform="rotate(5, 450, 140)"/>
+    <rect x="650" y="70" width="200" height="80" rx="6" fill="#2a2a2a" transform="rotate(-5, 750, 110)"/>
+    <rect x="950" y="90" width="200" height="80" rx="6" fill="#2a2a2a" transform="rotate(8, 1050, 130)"/>
+  </g>
+</svg>

@@ -1,0 +1,231 @@
+.page {
+  padding-top: 100px;
+  min-height: 100vh;
+  background: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.backLink:hover {
+  color: var(--color-primary);
+}
+
+.productGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.imageSection {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+}
+
+.productImage {
+  max-width: 400px;
+  transform: rotate(-10deg);
+}
+
+.infoSection {
+  padding: 1rem 0;
+}
+
+.category {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.name {
+  font-size: 3.5rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+}
+
+.price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+}
+
+.proteinInfo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-olive);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+}
+
+.description {
+  color: var(--color-text-light);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+.sectionTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+
+.ingredientsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.ingredient {
+  padding: 0.5rem 1rem;
+  background: #f5f5f5;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.quantitySection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.quantityLabel {
+  font-weight: 600;
+  color: var(--color-text-light);
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f5f5f5;
+  border-radius: 50px;
+  padding: 0.5rem;
+}
+
+.quantityBtn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  transition: all 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.quantityBtn:hover {
+  background: var(--color-primary);
+  color: white;
+}
+
+.quantityValue {
+  font-size: 1.2rem;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: center;
+}
+
+.addToCartBtn {
+  width: 100%;
+  padding: 1.25rem 2rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+  border-radius: 50px;
+  transition: all 0.3s;
+}
+
+.addToCartBtn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+}
+
+.notFound {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.notFoundTitle {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.notFoundText {
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}
+
+.backToShopBtn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: var(--color-accent);
+  color: white;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: background 0.2s;
+}
+
+.backToShopBtn:hover {
+  background: var(--color-accent-hover);
+}
+
+@media (max-width: 768px) {
+  .productGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .imageSection {
+    min-height: 300px;
+    padding: 2rem;
+  }
+  
+  .productImage {
+    max-width: 280px;
+  }
+  
+  .name {
+    font-size: 2.5rem;
+  }
+}
