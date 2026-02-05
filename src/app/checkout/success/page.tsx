@@ -73,11 +73,22 @@ function SuccessContent() {
           <p className={styles.orderId}>
             Order number: <strong>{order.order_number}</strong>
           </p>
-        ) : sessionId ? (
-          <p className={styles.orderId}>
-            Reference: <strong>{sessionId.slice(-8).toUpperCase()}</strong>
-          </p>
-        ) : null}
+        ) : (
+          <div className={styles.pendingOrder}>
+            <p className={styles.pendingText}>
+              Your payment was successful! Your order is being processed.
+            </p>
+            <p className={styles.pendingSubtext}>
+              You will receive a confirmation email shortly with your order number.
+            </p>
+            <p className={styles.supportText}>
+              If you don&apos;t receive an email within 10 minutes, please contact us at{' '}
+              <a href="mailto:ugofoodshelp@gmail.com" className={styles.supportLink}>
+                ugofoodshelp@gmail.com
+              </a>
+            </p>
+          </div>
+        )}
 
         <div className={styles.actions}>
           <Link href="/shop" className={styles.primaryButton}>
