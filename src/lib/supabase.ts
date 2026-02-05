@@ -34,6 +34,14 @@ export interface Order {
     postal_code: string;
     country: string;
   } | null;
+  billing_address: {
+    line1: string;
+    line2?: string;
+    city: string;
+    state: string;
+    postal_code: string;
+    country: string;
+  } | null;
   created_at: string;
   updated_at: string;
 }

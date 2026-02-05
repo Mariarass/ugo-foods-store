@@ -37,6 +37,14 @@ interface Order {
     postal_code: string;
     country: string;
   } | null;
+  billing_address: {
+    line1: string;
+    line2?: string;
+    city: string;
+    state: string;
+    postal_code: string;
+    country: string;
+  } | null;
   created_at: string;
   updated_at: string;
 }
@@ -343,18 +351,34 @@ export default function AdminPage() {
                         </div>
                       </div>
 
-                      {/* Shipping Address */}
-                      {order.shipping_address && (
-                        <div className={styles.detailSection}>
-                          <h4>Shipping Address</h4>
-                          <p className={styles.address}>
-                            {order.shipping_address.line1}<br />
-                            {order.shipping_address.line2 && <>{order.shipping_address.line2}<br /></>}
-                            {order.shipping_address.city}, {order.shipping_address.state} {order.shipping_address.postal_code}<br />
-                            {order.shipping_address.country}
-                          </p>
-                        </div>
-                      )}
+                      {/* Addresses */}
+                      <div className={styles.addressGrid}>
+                        {/* Shipping Address */}
+                        {order.shipping_address && (
+                          <div className={styles.detailSection}>
+                            <h4>Shipping Address</h4>
+                            <p className={styles.address}>
+                              {order.shipping_address.line1}<br />
+                              {order.shipping_address.line2 && <>{order.shipping_address.line2}<br /></>}
+                              {order.shipping_address.city}, {order.shipping_address.state} {order.shipping_address.postal_code}<br />
+                              {order.shipping_address.country}
+                            </p>
+                          </div>
+                        )}
+
+                        {/* Billing Address */}
+                        {order.billing_address && (
+                          <div className={styles.detailSection}>
+                            <h4>Billing Address</h4>
+                            <p className={styles.address}>
+                              {order.billing_address.line1}<br />
+                              {order.billing_address.line2 && <>{order.billing_address.line2}<br /></>}
+                              {order.billing_address.city}, {order.billing_address.state} {order.billing_address.postal_code}<br />
+                              {order.billing_address.country}
+                            </p>
+                          </div>
+                        )}
+                      </div>
 
                       {/* Tracking */}
                       {order.tracking_number && (

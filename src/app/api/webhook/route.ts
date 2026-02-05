@@ -68,6 +68,16 @@ export async function POST(request: NextRequest) {
         country: shippingDetails.address.country || '',
       } : null;
 
+      // Get billing address from customer_details
+      const billingAddress = session.customer_details?.address ? {
+        line1: session.customer_details.address.line1 || '',
+        line2: session.customer_details.address.line2 || undefined,
+        city: session.customer_details.address.city || '',
+        state: session.customer_details.address.state || '',
+        postal_code: session.customer_details.address.postal_code || '',
+        country: session.customer_details.address.country || '',
+      } : null;
+
       // Generate order number (uses database sequence for uniqueness)
       const orderNumber = await generateOrderNumber();
 
@@ -85,6 +95,7 @@ export async function POST(request: NextRequest) {
           total: total,
           status: 'confirmed',
           shipping_address: shippingAddress,
+          billing_address: billingAddress,
         })
         .select()
         .single();

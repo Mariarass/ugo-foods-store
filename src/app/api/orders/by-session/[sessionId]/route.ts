@@ -13,7 +13,7 @@ export async function GET(
 
   const { data: order, error } = await supabase
     .from('orders')
-    .select('order_number, customer_name, customer_email, total, status')
+    .select('order_number, customer_name, customer_email, total, status, items, subtotal, shipping, shipping_address, billing_address')
     .eq('stripe_session_id', sessionId)
     .single();
 
