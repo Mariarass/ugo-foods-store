@@ -1,7 +1,7 @@
 .page {
   min-height: 100vh;
   background: #f8f9fa;
-  padding: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 3rem) 1.5rem 4rem;
+  padding: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 1.5rem) 1.5rem 2rem;
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -9,77 +9,83 @@
 
 .container {
   width: 100%;
-  max-width: 600px;
+  max-width: 520px;
   background: white;
   border-radius: 16px;
   box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
+  padding: 1.5rem 2rem;
 }
 
 /* Header */
 .header {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .iconWrapper {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
-  height: 80px;
+  width: 56px;
+  height: 56px;
   background: #e8f5e9;
   border-radius: 50%;
   color: #2e7d32;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.iconWrapper svg {
+  width: 32px;
+  height: 32px;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #1a1a1a;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.25rem;
 }
 
 .subtitle {
   color: #666;
-  font-size: 1rem;
+  font-size: 0.875rem;
   margin: 0;
 }
 
 /* Loading State */
 .loadingState {
   text-align: center;
-  padding: 2rem;
+  padding: 1.5rem;
   color: #666;
 }
 
 .loadingState p {
-  margin-top: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
 }
 
 /* Order Number Box */
 .orderNumberBox {
   background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 10px;
+  padding: 1rem;
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .orderNumberLabel {
   display: block;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 0.75rem;
+  font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .orderNumber {
   display: block;
   color: white;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 700;
   font-family: monospace;
   letter-spacing: 0.05em;
@@ -88,52 +94,62 @@
 /* Details Grid */
 .detailsGrid {
   display: grid;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .detailCard {
   display: flex;
-  gap: 1rem;
-  padding: 1.25rem;
+  gap: 0.75rem;
+  padding: 0.875rem;
   background: #f8f9fa;
-  border-radius: 12px;
+  border-radius: 10px;
   border: 1px solid #e5e5e5;
 }
 
 .detailIcon {
   flex-shrink: 0;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: white;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #1a1a1a;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.detailIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
 .detailContent {
   flex: 1;
+  min-width: 0;
 }
 
 .detailContent h3 {
-  font-size: 0.875rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  color: #1a1a1a;
-  margin: 0 0 0.35rem;
+  color: #888;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
 }
 
 .detailContent p {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 0.8rem;
+  color: #1a1a1a;
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .detailContent strong {
   color: #1a1a1a;
+  font-weight: 500;
 }
 
 .address {
@@ -143,9 +159,9 @@
 .emailLink {
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
-  margin-top: 0.5rem;
-  font-size: 0.8rem;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
   color: #2563eb;
   font-weight: 500;
   text-decoration: none;
@@ -160,33 +176,35 @@
 /* Order Summary */
 .orderSummary {
   background: #fafafa;
-  border-radius: 12px;
-  padding: 1.25rem;
-  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  padding: 0.875rem;
+  margin-bottom: 1rem;
   border: 1px solid #e5e5e5;
 }
 
 .summaryTitle {
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #1a1a1a;
-  margin: 0 0 1rem;
-  padding-bottom: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.5rem;
   border-bottom: 1px solid #e5e5e5;
 }
 
 .itemsList {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-bottom: 1rem;
+  gap: 0.4rem;
+  margin-bottom: 0.5rem;
 }
 
 .item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
 }
 
 .itemName {
@@ -200,25 +218,25 @@
 
 .totals {
   border-top: 1px solid #e5e5e5;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.25rem;
 }
 
 .totalRow {
   display: flex;
   justify-content: space-between;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   color: #666;
 }
 
 .totalRow.grandTotal {
-  padding-top: 0.5rem;
+  padding-top: 0.35rem;
   border-top: 1px solid #e5e5e5;
   font-weight: 600;
   color: #1a1a1a;
-  font-size: 1rem;
+  font-size: 0.875rem;
 }
 
 .free {
@@ -230,39 +248,45 @@
 .infoBox {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 1.25rem;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
   background: #fff8e1;
-  border-radius: 10px;
+  border-radius: 8px;
   color: #8d6e00;
-  font-size: 0.875rem;
-  margin-bottom: 1.5rem;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.infoBox svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 /* Pending Order */
 .pendingOrder {
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
   background: #f0f9ff;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
 .pendingText {
-  font-size: 1rem;
+  font-size: 0.875rem;
   color: #1a1a1a;
   font-weight: 500;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.35rem;
 }
 
 .pendingSubtext {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: #666;
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
 }
 
 .supportText {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #888;
   margin: 0;
 }
@@ -279,41 +303,46 @@
 /* Actions */
 .actions {
   display: flex;
-  flex-direction: column;
   gap: 0.75rem;
 }
 
 .primaryButton {
+  flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 1rem 1.5rem;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
   background: #1a1a1a;
   color: white;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   text-decoration: none;
   transition: all 0.2s;
 }
 
 .primaryButton:hover {
   background: #333;
-  transform: translateY(-1px);
+}
+
+.primaryButton svg {
+  width: 16px;
+  height: 16px;
 }
 
 .secondaryButton {
+  flex: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.875rem 1.5rem;
+  padding: 0.75rem 1rem;
   background: transparent;
   color: #666;
   border: 1px solid #e5e5e5;
-  border-radius: 10px;
+  border-radius: 8px;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   text-decoration: none;
   transition: all 0.2s;
 }
@@ -341,39 +370,37 @@
 /* Mobile Styles */
 @media (max-width: 640px) {
   .page {
-    padding: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 1.5rem) 1rem 2rem;
+    padding: calc(var(--announcement-height, 34px) + var(--header-height, 65px) + 1rem) 0.75rem 1.5rem;
   }
 
   .container {
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 12px;
   }
 
   .iconWrapper {
-    width: 64px;
-    height: 64px;
+    width: 48px;
+    height: 48px;
   }
 
   .iconWrapper svg {
-    width: 36px;
-    height: 36px;
+    width: 28px;
+    height: 28px;
   }
 
   .title {
-    font-size: 1.5rem;
-  }
-
-  .orderNumber {
     font-size: 1.25rem;
   }
 
-  .detailCard {
-    flex-direction: column;
-    gap: 0.75rem;
+  .orderNumber {
+    font-size: 1.1rem;
   }
 
-  .detailIcon {
-    width: 36px;
-    height: 36px;
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
   }
 }
