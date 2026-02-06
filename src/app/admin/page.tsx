@@ -154,6 +154,8 @@ export default function AdminPage() {
       if (res.ok) {
         const data = await res.json();
         setOrders(orders.map(o => o.id === orderId ? data.order : o));
+        // Close the expanded card after successful update
+        setExpandedOrder(null);
       } else {
         setError('Failed to update order');
       }
@@ -300,6 +302,11 @@ export default function AdminPage() {
                       <span className={styles.orderDate}>
                         {order.created_at ? new Date(order.created_at).toLocaleDateString() : '-'}
                       </span>
+                      {order.updated_at && order.updated_at !== order.created_at && (
+                        <span className={styles.orderUpdated}>
+                          Updated: {new Date(order.updated_at).toLocaleString()}
+                        </span>
+                      )}
                     </div>
                     
                     <div className={styles.orderCustomer}>
