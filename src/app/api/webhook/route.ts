@@ -57,8 +57,14 @@ export async function POST(request: NextRequest) {
       const total = session.amount_total ? session.amount_total / 100 : 0;
       const shipping = total - subtotal;
 
-      // Get shipping address from customer_details or shipping if available
-      const shippingDetails = (session as unknown as { shipping_details?: { address?: Stripe.Address } }).shipping_details;
+      // Get shipping address from shipping_details (collected via shipping_address_collection)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const sessionAny = session as any;
+      const shippingDetails = sessionAny.shipping_details || sessionAny.shipping;
+      
+      console.log('Shipping details from Stripe:', JSON.stringify(shippingDetails, null, 2));
+      console.log('Customer details:', JSON.stringify(session.customer_details, null, 2));
+      
       const shippingAddress = shippingDetails?.address ? {
         line1: shippingDetails.address.line1 || '',
         line2: shippingDetails.address.line2 || undefined,
@@ -77,6 +83,9 @@ export async function POST(request: NextRequest) {
         postal_code: session.customer_details.address.postal_code || '',
         country: session.customer_details.address.country || '',
       } : null;
+      
+      console.log('Parsed shipping address:', JSON.stringify(shippingAddress, null, 2));
+      console.log('Parsed billing address:', JSON.stringify(billingAddress, null, 2));
 
       // Generate order number (uses database sequence for uniqueness)
       const orderNumber = await generateOrderNumber();
