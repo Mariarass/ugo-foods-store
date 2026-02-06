@@ -5,6 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 const FROM_EMAIL = 'UGo Foods <orders@ugo-foods.com>';
 const APP_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+const LOGO_URL = `${APP_URL}/images/logo.png`;
 
 // Format price
 const formatPrice = (price: number) => `$${price.toFixed(2)}`;
@@ -28,7 +29,7 @@ const baseTemplate = (content: string) => `
           <tr>
             <td align="center" style="padding-bottom: 32px;">
               <a href="${APP_URL}" style="text-decoration: none;">
-                <span style="font-size: 36px; font-weight: 800; color: #1a1a1a; letter-spacing: -1px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">UGo</span><span style="font-size: 36px; font-weight: 800; color: #22c55e;">.</span>
+                <img src="${LOGO_URL}" alt="UGo Foods" width="100" style="display: block; max-width: 100px;" />
               </a>
             </td>
           </tr>
