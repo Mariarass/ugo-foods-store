@@ -16,25 +16,25 @@ const baseTemplate = (content: string) => `
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UGo</title>
+  <title>UGo Foods</title>
 </head>
 <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background-color: #f5f5f5; margin: 0; padding: 0;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;">
     <tr>
       <td align="center">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 480px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 520px;">
           
           <!-- Logo -->
           <tr>
             <td align="center" style="padding-bottom: 32px;">
-              <span style="font-size: 28px; font-weight: 700; color: #1a1a1a; letter-spacing: -1px;">UGo</span>
+              <img src="${APP_URL}/logo.png" alt="UGo Foods" width="120" style="display: block; max-width: 120px;" />
             </td>
           </tr>
           
           <!-- Main Card -->
           <tr>
             <td>
-              <table width="100%" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 12px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="background: #ffffff; border-radius: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
                 ${content}
               </table>
             </td>
@@ -42,12 +42,17 @@ const baseTemplate = (content: string) => `
           
           <!-- Footer -->
           <tr>
-            <td style="padding: 32px 0; text-align: center;">
-              <p style="color: #999; font-size: 12px; margin: 0 0 8px;">
-                Questions? <a href="mailto:ugofoodshelp@gmail.com" style="color: #666; text-decoration: none;">ugofoodshelp@gmail.com</a>
+            <td style="padding: 32px 24px; text-align: center;">
+              <p style="color: #888; font-size: 12px; margin: 0 0 12px; line-height: 1.6;">
+                This is an automated message — please do not reply to this email.<br>
+                If you have any questions, feel free to reach out anytime at<br>
+                <a href="mailto:ugofoodshelp@gmail.com" style="color: #f97316; text-decoration: none; font-weight: 500;">ugofoodshelp@gmail.com</a>
               </p>
-              <p style="color: #bbb; font-size: 11px; margin: 0;">
-                © 2026 UGo Foods
+              <p style="color: #aaa; font-size: 11px; margin: 16px 0 0;">
+                © 2026 UGo Foods. All rights reserved.
+              </p>
+              <p style="color: #ccc; font-size: 11px; margin: 8px 0 0;">
+                Made with ❤️ for adventurers everywhere.
               </p>
             </td>
           </tr>
@@ -68,7 +73,7 @@ export async function sendOrderConfirmedEmail(order: Order) {
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td style="color: #1a1a1a; font-size: 14px;">${item.name} <span style="color: #999;">×${item.quantity}</span></td>
-            <td align="right" style="color: #1a1a1a; font-size: 14px;">${formatPrice(item.price * item.quantity)}</td>
+            <td align="right" style="color: #1a1a1a; font-size: 14px; font-weight: 500;">${formatPrice(item.price * item.quantity)}</td>
           </tr>
         </table>
       </td>
@@ -77,6 +82,28 @@ export async function sendOrderConfirmedEmail(order: Order) {
 
   const orderNumber = order.order_number || order.id?.slice(-8).toUpperCase() || 'N/A';
 
+  // Customer & Shipping Info Section
+  const customerInfoSection = order.shipping_address ? `
+    <tr>
+      <td style="padding: 0 32px 24px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #fafafa; border-radius: 12px;">
+          <tr>
+            <td style="padding: 20px;">
+              <p style="color: #f97316; margin: 0 0 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">📍 Shipping Address</p>
+              <p style="color: #1a1a1a; margin: 0; font-size: 14px; line-height: 1.7;">
+                <strong>${order.customer_name}</strong><br>
+                ${order.shipping_address.line1}<br>
+                ${order.shipping_address.line2 ? order.shipping_address.line2 + '<br>' : ''}
+                ${order.shipping_address.city}, ${order.shipping_address.state} ${order.shipping_address.postal_code}<br>
+                ${order.shipping_address.country}
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  ` : '';
+
   const content = `
     <tr>
       <td style="padding: 32px 32px 24px;">
@@ -84,15 +111,15 @@ export async function sendOrderConfirmedEmail(order: Order) {
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center" style="padding-bottom: 24px;">
-              <div style="width: 48px; height: 48px; background: #f0fdf4; border-radius: 50%; display: inline-block; text-align: center; line-height: 48px;">
-                <span style="font-size: 24px;">✓</span>
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-radius: 50%; display: inline-block; text-align: center; line-height: 56px;">
+                <span style="font-size: 28px;">🎉</span>
               </div>
             </td>
           </tr>
           <tr>
             <td align="center">
-              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 20px; font-weight: 600;">Order Confirmed</h1>
-              <p style="color: #666; margin: 0; font-size: 14px;">Thank you, ${order.customer_name}</p>
+              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 22px; font-weight: 600;">Woohoo! Order Confirmed</h1>
+              <p style="color: #666; margin: 0; font-size: 15px;">Thanks for your order, ${order.customer_name}! 🧡</p>
             </td>
           </tr>
         </table>
@@ -102,14 +129,23 @@ export async function sendOrderConfirmedEmail(order: Order) {
     <!-- Order Number -->
     <tr>
       <td style="padding: 0 32px 24px;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background: #fafafa; border-radius: 8px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-radius: 12px; border: 1px solid #fed7aa;">
           <tr>
             <td style="padding: 16px; text-align: center;">
-              <p style="color: #999; margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">Order Number</p>
-              <p style="color: #1a1a1a; margin: 0; font-size: 18px; font-weight: 600; font-family: monospace;">${orderNumber}</p>
+              <p style="color: #9a3412; margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">Order Number</p>
+              <p style="color: #1a1a1a; margin: 0; font-size: 20px; font-weight: 700; font-family: monospace; letter-spacing: 1px;">${orderNumber}</p>
             </td>
           </tr>
         </table>
+      </td>
+    </tr>
+    
+    ${customerInfoSection}
+    
+    <!-- Items Header -->
+    <tr>
+      <td style="padding: 0 32px 12px;">
+        <p style="color: #f97316; margin: 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">🛒 Order Summary</p>
       </td>
     </tr>
     
@@ -124,7 +160,7 @@ export async function sendOrderConfirmedEmail(order: Order) {
     
     <!-- Totals -->
     <tr>
-      <td style="padding: 16px 32px 32px;">
+      <td style="padding: 16px 32px 24px;">
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td style="color: #666; font-size: 13px; padding: 4px 0;">Subtotal</td>
@@ -132,14 +168,14 @@ export async function sendOrderConfirmedEmail(order: Order) {
           </tr>
           <tr>
             <td style="color: #666; font-size: 13px; padding: 4px 0;">Shipping</td>
-            <td align="right" style="color: ${order.shipping === 0 ? '#16a34a' : '#1a1a1a'}; font-size: 13px;">${order.shipping === 0 ? 'Free' : formatPrice(order.shipping)}</td>
+            <td align="right" style="color: ${order.shipping === 0 ? '#16a34a' : '#1a1a1a'}; font-size: 13px; font-weight: ${order.shipping === 0 ? '600' : '400'};">${order.shipping === 0 ? 'FREE 🎁' : formatPrice(order.shipping)}</td>
           </tr>
           <tr>
-            <td colspan="2" style="padding: 12px 0 8px;"><div style="border-top: 1px solid #eee;"></div></td>
+            <td colspan="2" style="padding: 12px 0 8px;"><div style="border-top: 2px solid #f0f0f0;"></div></td>
           </tr>
           <tr>
-            <td style="color: #1a1a1a; font-size: 15px; font-weight: 600;">Total</td>
-            <td align="right" style="color: #1a1a1a; font-size: 15px; font-weight: 600;">${formatPrice(order.total)}</td>
+            <td style="color: #1a1a1a; font-size: 16px; font-weight: 700;">Total</td>
+            <td align="right" style="color: #1a1a1a; font-size: 16px; font-weight: 700;">${formatPrice(order.total)}</td>
           </tr>
         </table>
       </td>
@@ -148,9 +184,15 @@ export async function sendOrderConfirmedEmail(order: Order) {
     <!-- Note -->
     <tr>
       <td style="padding: 0 32px 32px;">
-        <p style="color: #999; margin: 0; font-size: 13px; text-align: center;">
-          We'll email you when your order ships.
-        </p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f0f9ff; border-radius: 12px; border: 1px solid #bae6fd;">
+          <tr>
+            <td style="padding: 16px; text-align: center;">
+              <p style="color: #0369a1; margin: 0; font-size: 13px;">
+                📬 We'll send you another email as soon as your order ships!
+              </p>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   `;
@@ -177,11 +219,11 @@ export async function sendOrderShippedEmail(order: Order) {
   const trackingSection = order.tracking_number ? `
     <tr>
       <td style="padding: 0 32px 24px;">
-        <table width="100%" cellpadding="0" cellspacing="0" style="background: #fafafa; border-radius: 8px;">
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-radius: 12px; border: 1px solid #fed7aa;">
           <tr>
             <td style="padding: 16px; text-align: center;">
-              <p style="color: #999; margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">Tracking Number</p>
-              <p style="color: #1a1a1a; margin: 0; font-size: 16px; font-weight: 600; font-family: monospace; letter-spacing: 1px;">${order.tracking_number}</p>
+              <p style="color: #9a3412; margin: 0 0 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">📋 Tracking Number</p>
+              <p style="color: #1a1a1a; margin: 0; font-size: 18px; font-weight: 700; font-family: monospace; letter-spacing: 1px;">${order.tracking_number}</p>
             </td>
           </tr>
         </table>
@@ -192,13 +234,20 @@ export async function sendOrderShippedEmail(order: Order) {
   const addressSection = order.shipping_address ? `
     <tr>
       <td style="padding: 0 32px 24px;">
-        <p style="color: #999; margin: 0 0 8px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;">Shipping To</p>
-        <p style="color: #1a1a1a; margin: 0; font-size: 14px; line-height: 1.6;">
-          ${order.shipping_address.line1}<br>
-          ${order.shipping_address.line2 ? order.shipping_address.line2 + '<br>' : ''}
-          ${order.shipping_address.city}, ${order.shipping_address.state} ${order.shipping_address.postal_code}<br>
-          ${order.shipping_address.country}
-        </p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #fafafa; border-radius: 12px;">
+          <tr>
+            <td style="padding: 20px;">
+              <p style="color: #f97316; margin: 0 0 12px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600;">📍 Shipping To</p>
+              <p style="color: #1a1a1a; margin: 0; font-size: 14px; line-height: 1.7;">
+                <strong>${order.customer_name}</strong><br>
+                ${order.shipping_address.line1}<br>
+                ${order.shipping_address.line2 ? order.shipping_address.line2 + '<br>' : ''}
+                ${order.shipping_address.city}, ${order.shipping_address.state} ${order.shipping_address.postal_code}<br>
+                ${order.shipping_address.country}
+              </p>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   ` : '';
@@ -210,15 +259,15 @@ export async function sendOrderShippedEmail(order: Order) {
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center" style="padding-bottom: 24px;">
-              <div style="width: 48px; height: 48px; background: #eff6ff; border-radius: 50%; display: inline-block; text-align: center; line-height: 48px;">
-                <span style="font-size: 24px;">📦</span>
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-radius: 50%; display: inline-block; text-align: center; line-height: 56px;">
+                <span style="font-size: 28px;">📦</span>
               </div>
             </td>
           </tr>
           <tr>
             <td align="center">
-              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 20px; font-weight: 600;">Your Order Has Shipped</h1>
-              <p style="color: #666; margin: 0; font-size: 14px;">Order ${orderNumber}</p>
+              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 22px; font-weight: 600;">Your Order Is On Its Way! 🚀</h1>
+              <p style="color: #666; margin: 0; font-size: 15px;">Order ${orderNumber} is heading to you</p>
             </td>
           </tr>
         </table>
@@ -231,9 +280,16 @@ export async function sendOrderShippedEmail(order: Order) {
     <!-- Delivery Estimate -->
     <tr>
       <td style="padding: 0 32px 32px;">
-        <p style="color: #666; margin: 0; font-size: 13px; text-align: center;">
-          Estimated delivery: <strong style="color: #1a1a1a;">5-7 business days</strong>
-        </p>
+        <table width="100%" cellpadding="0" cellspacing="0" style="background: #f0f9ff; border-radius: 12px; border: 1px solid #bae6fd;">
+          <tr>
+            <td style="padding: 16px; text-align: center;">
+              <p style="color: #0369a1; margin: 0; font-size: 13px;">
+                🕐 Estimated delivery: <strong>5-7 business days</strong><br>
+                <span style="font-size: 12px; color: #64748b;">We'll let you know when it arrives!</span>
+              </p>
+            </td>
+          </tr>
+        </table>
       </td>
     </tr>
   `;
@@ -263,15 +319,15 @@ export async function sendOrderDeliveredEmail(order: Order) {
         <table width="100%" cellpadding="0" cellspacing="0">
           <tr>
             <td align="center" style="padding-bottom: 24px;">
-              <div style="width: 48px; height: 48px; background: #fef3c7; border-radius: 50%; display: inline-block; text-align: center; line-height: 48px;">
-                <span style="font-size: 24px;">✨</span>
+              <div style="width: 56px; height: 56px; background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border-radius: 50%; display: inline-block; text-align: center; line-height: 56px;">
+                <span style="font-size: 28px;">🎊</span>
               </div>
             </td>
           </tr>
           <tr>
             <td align="center">
-              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 20px; font-weight: 600;">Delivered</h1>
-              <p style="color: #666; margin: 0; font-size: 14px;">Order ${orderNumber}</p>
+              <h1 style="color: #1a1a1a; margin: 0 0 8px; font-size: 22px; font-weight: 600;">It's Here! 🥳</h1>
+              <p style="color: #666; margin: 0; font-size: 15px;">Order ${orderNumber} has been delivered</p>
             </td>
           </tr>
         </table>
@@ -280,9 +336,10 @@ export async function sendOrderDeliveredEmail(order: Order) {
     
     <tr>
       <td style="padding: 0 32px 24px; text-align: center;">
-        <p style="color: #666; margin: 0; font-size: 14px; line-height: 1.6;">
-          Hi ${order.customer_name}, your order has arrived.<br>
-          We hope you enjoy your snacks!
+        <p style="color: #666; margin: 0; font-size: 15px; line-height: 1.7;">
+          Hey ${order.customer_name}! 👋<br><br>
+          Your snacks have arrived and are ready to be enjoyed!<br>
+          We hope they bring some adventure to your day. 🌟
         </p>
       </td>
     </tr>
@@ -290,8 +347,8 @@ export async function sendOrderDeliveredEmail(order: Order) {
     <!-- CTA -->
     <tr>
       <td style="padding: 0 32px 32px;" align="center">
-        <a href="${APP_URL}/shop" style="display: inline-block; background: #1a1a1a; color: #fff; text-decoration: none; padding: 12px 32px; border-radius: 6px; font-size: 14px; font-weight: 500;">
-          Shop Again
+        <a href="${APP_URL}/shop" style="display: inline-block; background: linear-gradient(135deg, #f97316 0%, #ea580c 100%); color: #fff; text-decoration: none; padding: 14px 36px; border-radius: 8px; font-size: 14px; font-weight: 600; box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);">
+          Shop More Snacks 🛒
         </a>
       </td>
     </tr>
